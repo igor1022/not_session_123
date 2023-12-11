@@ -8,8 +8,10 @@ const Filter = ({setSelected, selected}) => {
     const options = [];
     
     const get_all_state = async() => {
-        const states_arr = await axios.get('http://localhost:4500/get_all_state');
+        const states_arr = await axios.get('https://guarded-chamber-88701-7c7ee3d58107.herokuapp.com/get_all_state');
+        console.log(states_arr.data.length);
         for(let i = 0; i < states_arr.data.length; i++) {
+          //console.log(states_arr.data[i]);
             const opt_numb = {     
                 label: states_arr.data[i].state,  
                 value: states_arr.data[i].state        

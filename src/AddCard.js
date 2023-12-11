@@ -40,10 +40,10 @@ function AddCard(props) {
             <button onClick={
                 async() => {//setShowModal(false);
                        //console.log(obj);
-                       let obj = await axios.get('http://localhost:4500/get_save_card');
-                       let result = await axios.post('http://localhost:4500/add_card', obj.data);
+                       let obj = await axios.get('https://guarded-chamber-88701-7c7ee3d58107.herokuapp.com/get_save_card');
+                       let result = await axios.post('https://guarded-chamber-88701-7c7ee3d58107.herokuapp.com/add_card', obj.data);
                        setShowDelayedText(['Карточка', 'была', 'добавлена']);
-                       await axios.get('http://localhost:4500/delay');
+                       await axios.get('https://guarded-chamber-88701-7c7ee3d58107.herokuapp.com/delay');
                        //sleep(3000);
                        setShowModal(false);
                        setCountrecord(result.data.count_record);
@@ -56,7 +56,7 @@ function AddCard(props) {
       <form onSubmit={
         handleSubmit(async (data) => { 
         await createID();
-        let result = await axios.post('http://localhost:4500/save_card', {data})
+        let result = await axios.post('https://guarded-chamber-88701-7c7ee3d58107.herokuapp.com/save_card', {data})
         //console.log(obj);
         //let result = await axios.post('http://localhost:4500/add_card', {data});
         //setCountrecord(result.data.count_record);
@@ -79,39 +79,4 @@ function AddCard(props) {
         </div>
     )
 }  
-
-   /* return (
-      <div>
-        <form onSubmit={handleSubmit(async(data) => {
-        createID();
-        let result = await axios.post('http://localhost:4500/add_card', {data});
-        setCountrecord(result.data.count_record);
-
-        setShowDelayedText(['Карточка', 'была', 'добавлена']);
-        await axios.get('http://localhost:4500/delay');
-        setShowModal(false);
-
-        })}><button>{showDelayedText[1]}</button>
-      <button onClick={() => {setShowModal(false)}}>{showDelayedText[2]}</button>
-        <Modal
-    ariaHideApp={false}
-    isOpen={showModal}
-    onRequestClose={() => setShowModal(false)}
-    >
-      {showDelayedText[0]}
-
-         <Header1 />
-        <input className='form_input' type="number" step='0.0001' {...register("area", { required: true })} placeholder="area" />
-        <input className='form_input' type="text" {...register("cadastral_number", { required: true })} placeholder="cadastral_number" />
-        <input className='form_input' type="number" {...register("lotNumber", { required: true })} placeholder="lotNumber" />
-        <input className='form_input' type="number" step='0.0001' {...register("price", { required: true })} placeholder="price" />
-        <input className='form_input' type="text" {...register("region", { required: true })} placeholder="region" />
-        <input className='form_input' type="number" step='0.0001' {...register("revenue", { required: true })} placeholder="revenue" />
-        <input className='form_input' type="text" {...register("state", { required: true })} placeholder="state" />
-        <input className='form_input' type="text" {...register("tenant", { required: true })} placeholder="tenant" />
-        <input className='form_input' type="submit" />
-        </form>
-    </div>
-    );
-  }*/
 export default AddCard;

@@ -14,7 +14,7 @@ export const Input = (props) => {
             flag = true;
         }
         if(ev.target.value !== previous_value) {
-            await axios.post('http://localhost:4500/change_price', {
+            await axios.post('https://guarded-chamber-88701-7c7ee3d58107.herokuapp.com/change_price', {
                 id: ev.target.id,
                 new_price: ev.target.value
             });

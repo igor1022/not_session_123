@@ -33,10 +33,10 @@ function Component(props) {
 
       <button onClick={async() => {
         setShowDelayedText(['Карточка', 'была', 'удалена']);
-        await axios.get('http://localhost:4500/delay');
+        await axios.get('https://guarded-chamber-88701-7c7ee3d58107.herokuapp.com/delay');
         setShowModal(false);
-        await axios.get(`http://localhost:4500/delete_card/${id}/`);
-        setLength(await axios.get('http://localhost:4500/get_length_bd'));
+        await axios.get(`https://guarded-chamber-88701-7c7ee3d58107.herokuapp.com/delete_card/${id}/`);
+        setLength(await axios.get('https://guarded-chamber-88701-7c7ee3d58107.herokuapp.com/get_length_bd'));
         }}>{showDelayedText[1]}</button>
       <button onClick={() => {setShowModal(false)}}>{showDelayedText[2]}</button>
     </Modal>
